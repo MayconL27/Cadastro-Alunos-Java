@@ -4,7 +4,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int opc;
+        int opc, qtdNotas;
+        float nota = 0;
+        String nome, cpf;
+        Sala novaSala = new Sala();
+        Aluno novoAluno = new Aluno();
         Scanner teclado;
 
         teclado = new Scanner(System.in);
@@ -24,13 +28,26 @@ public class Main {
             switch (opc) {
                 case 1:
                     System.out.println("\nNome: ");
-                    String nome = teclado.nextLine();
-
+                    nome = teclado.nextLine();
                     System.out.println("\nCPF: ");
-                    String cpf = teclado.nextLine();
+                    cpf = teclado.nextLine();
+
+                    novoAluno = new Aluno(nome, cpf);
+
+                    System.out.println("\nQuantidades de notas?");
+                    qtdNotas = teclado.nextInt();
+
+                    for (int i = 0; i < qtdNotas; i++) {
+                        System.out.println("\nNota " + (i + 1));
+                        nota = teclado.nextFloat();
+                    }
+
+                    novaSala.insereAluno(novoAluno);
+
                     
                     break;
                 case 2:
+                    novaSala.listarAlunos();
 
                     break;
                 case 3:
